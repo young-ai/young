@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define N 8
+int main()
+{       int high=0,a[N];
+        int low = 0,mid=0;
+        printf("请输入数值：");
+
+        for(high=0;high<=N-1;high++)
+            scanf("%d",&a[high]);
+
+        high--;
+        while(low < high)
+        {
+            mid = low + (high - low)/2;
+            if(a[mid] < a[mid+1])
+                low = mid+1;
+            else high = mid;
+        }
+        printf("%d",low);
+}
