@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define N 20
+int main()
+{
+   int i,mid,a[N],low=0,high=0;
+   printf("请输入数字：");
+   scanf("%d",&a[high]);
+   while(a[high]<=10000)
+   {
+       high++;
+       scanf("%d",&a[high]);
+
+   }
+   high--;
+   if (high<=0)
+   {
+       printf("输入有误！");
+       return 0;
+       }
+   printf("请输入要查找的数字：");
+   scanf("%d",&i);
+   while(low < high)
+        {
+            mid = low + (high - low)/2;
+            if(i > a[mid])
+                low = mid+1;
+            else  high = mid;
+        }
+   if(a[low]==i)
+       printf("%d",low);
+   else printf("无此数字！");
+
+}
