@@ -1,0 +1,21 @@
+class Solution:
+    """
+    @param nums: a rotated sorted array
+    @return: the minimum number in the array
+    """
+    def findMin(self, nums):
+        # write your code here
+        start=0
+        end=len(nums)-1
+      
+        while start<end:
+                if (nums[end]>nums[start]):
+                    print(nums[start])
+                    break
+                else:    
+                    mid=start+(end-start)//2
+                    if (nums[start]>nums[mid]):
+                            end=mid
+                    else:start=mid+1
+            
+        return nums[start]           
