@@ -1,0 +1,14 @@
+1.返回值为low
+while(low<wile):
+  mid=low+(high-low)//2
+  if(f(mid)满足条件)：
+    low=mid
+  else:high=mid-1
+return low
+2.返回值为high
+while(low<=high):#等于是在low多加1以后让high进来再减一
+  mid=low+(high-low)//2
+  if(f(mid)满足条件)：
+    low=mid+1
+  else:high=mid-1  
+return high
