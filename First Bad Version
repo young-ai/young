@@ -17,14 +17,14 @@ class Solution:
 
         start, end = 1, n
         while start < end:
-            mid = start + (end - start) / 2
-            if VersionControl.isBadVersion(mid):
+            mid = start + (end - start)//2
+            if SVNRepo.isBadVersion(mid):
                 end = mid
             else:
                 start = mid+1
 
-        if VersionControl.isBadVersion(start):
+        if SVNRepo.isBadVersion(start):
             return start
-       
+        
 
         return -1
