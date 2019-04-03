@@ -14,13 +14,21 @@ class Solution:
     @return: The new head of reversed linked list.
     """
     def reverse(self, head):
-         if (head==None or head.next == None) : 
+        # 迭代法
+            # if (head==None or head.next == None) : 
+            #     return head
+            # p = head
+            # pre = None
+            # while head != None:
+            #     p = p.next
+            #     head.next = pre
+            #     pre = head
+            #     head = p
+            # return pre
+        #递归法    
+            if (head==None or head.next == None) : 
                 return head
-            p = head
-            pre = None
-            while head != None:
-                p = p.next
-                head.next = pre
-                pre = head
-                head = p
-            return pre
+            p=self.reverse(head.next)
+            head.next.next=head
+            head.next=None
+            return p
