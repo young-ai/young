@@ -14,14 +14,7 @@ class Solution:
     @return: The new head of reversed linked list.
     """
     def reverse(self, head):
-        # write your code here
-         if head:  # 空链表
-            p = head
-            length = 1
-            while p != None:
-                length += 1
-                p = p.next
-            if length == 1:
+         if (head==None or head.next == None) : 
                 return head
             p = head
             pre = None
@@ -31,4 +24,3 @@ class Solution:
                 pre = head
                 head = p
             return pre
-         else: return head
