@@ -1,0 +1,21 @@
+class Solution:
+    """
+    @param: nums: a list of integers
+    @return: find a  majority number
+    """
+    def majorityNumber(self, nums):
+        # write your code here
+        # python sort函数解法
+        # return sorted(nums)[len(nums)//2]
+       
+        count=0
+        a=nums[0]
+        for i in range(len(nums)):
+            if (nums[i]==a):
+                count+=1
+            else:
+                count-=1
+                if(count==0):
+                    a=nums[i]
+                    count+=1
+        return a
