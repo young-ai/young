@@ -1,0 +1,51 @@
+#复杂方法
+# class Solution:
+#     """
+#     @param num: A list of integers
+#     @return: An integer
+#     """
+#     def longestConsecutive(self, num):
+#         # write your code here
+#         if len(num)==0:
+#             return 0
+#         length=0
+#         pre,next=-1,-1
+        
+#         for i in range (len(num)):
+#             if i>len(num)-1:
+#                 return length
+#             pre=num[i]-1
+#             next=num[i]+1
+#             num.remove(num[i])
+#             while num.count(pre):
+#                 num.remove(pre)
+#                 pre-=1
+#             while num.count(next):
+#                 num.remove(next)
+#                 next+=1
+#             length=max(length,next-pre-1)
+#         return length
+#哈希表方法
+class Solution:
+    # @param num, a list of integer
+    # @return an integer
+    def longestConsecutive(self, num):
+        hashmap = { }
+        for i in num:
+            hashmap[i] = True
+        max_n = 0
+        for k, v in hashmap.items():
+            if not v:
+                continue
+            left = k - 1
+            right = k + 1
+            while hashmap.get(left) :
+                hashmap[left] = False
+                left -= 1
+            while hashmap.get(right) :
+                hashmap[right] = False
+                right += 1
+            n = right - left - 1
+            if n > max_n:
+                max_n = n
+        return max_n
