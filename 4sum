@@ -1,0 +1,40 @@
+class Solution(object):
+    def fourSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        numLen, res = len(nums),[]
+        if numLen < 4: 
+            return []
+        nums.sort()
+        for p in range(numLen-3): 
+            if (p>0 and nums[p]==nums[p-1]):
+                continue
+            for q in range(p+1, numLen-2): 
+                if (q>p+1 and nums[q]==nums[q-1]):
+                    continue
+                l=q+1
+                r=numLen-1
+                while(l<r):
+                    sum=nums[p]+nums[q]+nums[l]+nums[r]
+                    if sum==target:
+                       res.append([nums[p],nums[q],nums[l],nums[r]])
+                       l+=1
+                       r-=1
+                       while(nums[l]==nums[l-1]):
+                           l+=1
+                       while(nums[r]==nums[r+1]):
+                           r-=1
+                       
+                    else:
+                        if sum>target:
+                            r-=1
+                            while(nums[r]==nums[r+1]):
+                                r-=1
+                        else:
+                            l+=1
+                            while(nums[l]==nums[l-1]):
+                                l+=1
+        return res
