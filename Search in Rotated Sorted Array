@@ -73,3 +73,4 @@ class Solution:
              if target==A[l]:
                 return l
              return -1
+只需判断target数是否在单增的序列之内，然后对左右边界做加减即可
