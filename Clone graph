@@ -1,0 +1,60 @@
+#深度搜索，复制节点，关系，需用递归
+"""
+Definition for a undirected graph node
+class UndirectedGraphNode:
+    def __init__(self, x):
+        self.label = x
+        self.neighbors = []
+"""
+
+
+class Solution:
+    """
+    @param: node: A undirected graph node
+    @return: A undirected graph node
+    """
+    def cloneGraph(self, node):
+        # write your code here
+        def dfs(input, map):
+            if input in map:
+                return map[input]
+            output = UndirectedGraphNode(input.label)
+            map[input] = output
+            for neighbor in input.neighbors:
+                output.neighbors.append(dfs(neighbor, map))
+            return output
+        if node == None: return None
+        return dfs(node, {})
+#广度搜索，复制节点，关系，需用队列
+"""
+Definition for a undirected graph node
+class UndirectedGraphNode:
+    def __init__(self, x):
+        self.label = x
+        self.neighbors = []
+"""
+
+
+class Solution:
+    """
+    @param: node: A undirected graph node
+    @return: A undirected graph node
+    """
+    def cloneGraph(self, node):
+        # write your code here
+        if node == None: return None
+        queue = []; map = {}
+        newhead = UndirectedGraphNode(node.label)
+        queue.append(node)
+        map[node] = newhead
+        while queue:
+            curr = queue.pop()
+            for neighbor in curr.neighbors:
+                if neighbor not in map:
+                    copy = UndirectedGraphNode(neighbor.label)
+                    map[curr].neighbors.append(copy)
+                    map[neighbor] = copy
+                    queue.append(neighbor)
+                else:
+                    map[curr].neighbors.append(map[neighbor])
+        return newhead
